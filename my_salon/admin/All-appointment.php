@@ -5,7 +5,7 @@ include('includes/dbconnection.php');
 include('includes/sms_helper.php'); 
 if (strlen($_SESSION['bpmsaid']==0)) {
   header('location:logout.php');
-  } else{
+} else{
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -47,13 +47,26 @@ $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 });
 </script>
 
-<h3 class="title1">Accepted List</h3>
+<h3 class="title1">All Appointments</h3>
 <div class="table-responsive bs-example widget-shadow">
-<h4>Accepted Appointments:</h4>
+<h4>All Appointments:</h4>
 <table class="table table-bordered">
 <thead>
 <tr>
-<th>S.No</th><th>Name</th><th>Apt_Number</th><th>Mobile</th><th>Creation Date</th><th>Status</th><th>View</th>
+<th>S.No</th>
+<th>Name</th>
+<th>Apt_Number</th>
+<th>Mobile</th>
+<th>App Date/Time</th>
+<th>Service</th>
+<th>Total</th>
+<th>Advance</th>
+<th>Balance</th>
+<th>Payment</th>
+<th>Transaction ID</th>
+<th>Status</th>
+<th>Action</th>
+<th>View</th>
 </tr>
 </thead>
 <tbody>
@@ -61,14 +74,50 @@ $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 $ret=mysqli_query($con,"select * from tblcustomers ORDER BY ID DESC");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
+$total = isset($row['TotalCost']) ? $row['TotalCost'] : 0;
+$adv = isset($row['AdvanceAmount']) ? $row['AdvanceAmount'] : 0;
+$bal = $total - $adv;
 ?>
 <tr>
 <th scope="row"><?php echo $cnt;?></th>
 <td><?php echo $row['Name'];?></td>
 <td><?php echo $row['AptNumber'];?></td>
 <td><?php echo $row['MobileNumber'];?></td>
-<td><?php echo $row['CreationDate'];?></td>
-<td><span style="color:green;font-weight:bold;"><?php echo $row['Status'];?></span></td>
+<td><?php echo $row['app_date'];?> <?php echo $row['app_time'];?></td>
+<td><?php echo $row['Details'];?></td>
+<td>Rs. <?php echo $total;?></td>
+<td style="color:green; font-weight:bold;">Rs. <?php echo $adv;?></td>
+<td style="color:red; font-weight:bold;">Rs. <?php echo $bal;?></td>
+<td>
+<?php echo isset($row['PaymentMethod']) ? $row['PaymentMethod'] : 'Cash'; ?><br>
+<small style="color:<?php echo (isset($row['PaymentStatus']) && $row['PaymentStatus']=='Paid') ? 'green' : 'orange'; ?>; font-weight:bold;">
+<?php echo isset($row['PaymentStatus']) ? $row['PaymentStatus'] : 'Pending'; ?>
+</small>
+<br>
+<a href="update-payment.php?id=<?php echo $row['ID'];?>" style="color:blue; font-size:12px;"><u>Update Payment</u></a>
+</td>
+<td style="font-size:12px;">
+<?php 
+if(!empty($row['TransactionId'])){
+echo $row['TransactionId']."<br><small>kamblesahil1312@oksbi</small>";
+} else {
+echo "N/A (Cash)";
+}
+?>
+</td>
+<td>
+<?php if($row['Status']==""){ ?>
+<span style="color:orange;">Pending</span>
+<?php } else { ?>
+<span style="color:green;font-weight:bold;"><?php echo $row['Status'];?></span>
+<?php } ?>
+</td>
+<td>
+<?php if($row['Status']!="Accepted" && $row['Status']!="Rejected"){ ?>
+<a href="accept.php?id=<?php echo $row['ID'];?>" style="color:green; font-weight:bold;">Accept</a> | 
+<a href="reject.php?id=<?php echo $row['ID'];?>" style="color:red; font-weight:bold;">Reject</a>
+<?php } else { echo "Done"; } ?>
+</td>
 <td><a href="view-customer-details.php?viewid=<?php echo $row['ID'];?>">View</a></td>
 </tr>
 <?php $cnt=$cnt+1; }?>

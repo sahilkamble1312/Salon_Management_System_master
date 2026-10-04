@@ -8,11 +8,11 @@ if (isset($_POST['sub'])) {
 
     $query = mysqli_query($con, "insert into tblsubscriber(Email) value('$email')");
     if ($query) {
-        $to = "abhisheksingh81037272@gmail.com";
+        $to = "kamblesahil1312@gmail.com";
         $subject = "New subscriber to your newsletter";
         $message = "You have a new subscriber to your newsletter:\n\nEmail address: $email";
-        $headers = "From:abhisheksingh81037272@gmail.com \r\n";
-        $headers .= "Reply-To: abhisheksingh81037272@gmail.com\r\n";
+        $headers = "From:kamblesahil1312@gmail.com \r\n";
+        $headers .= "Reply-To: kamblesahil1312@gmail.com\r\n";
         $headers .= "Content-type: text/plain; charset=UTF-8\r\n";
         mail($to, $subject, $message, $headers);
         echo "<script>alert('Your subscribe successfully!.');</script>";
@@ -45,11 +45,11 @@ while ($row = mysqli_fetch_array($ret)) {
         <?php echo $row['PageDescription']; ?>
     </li>
     <li><i class="fa fa-phone"></i>
-    <a href="tel:9435059030"><?php echo $row['MobileNumber']; ?></a>
+    <a href="tel:8805423266"><?php echo $row['MobileNumber']; ?></a>
     </li>
 
     <li><i class="fa fa-envelope-o"></i>
-    <a href="mailto:aayurdhafoundation@gmail.com"><?php  echo $row['Email'];?></a>
+    <a href="mailto:kamblesahil1312@gmail.com"><?php  echo $row['Email'];?></a>
     </li>
 <?php } ?>
                         </ul>
@@ -61,13 +61,11 @@ while ($row = mysqli_fetch_array($ret)) {
                         <h2 class="widget-title">Social Feed</h2>
                         <ul class="listnone">
                             <li>
-                                <a href="https://www.facebook.com/ab.abhishek.1806?mibextid=ZbWKwL"> <i
-                                        class="fa fa-facebook"></i> Facebook </a>
+                            
                             </li>
-                            <li><a href="https://www.linkedin.com/in/abhishek-singh-531889240/"><i
+                            <li><a href="https://www.linkedin.com/in/sahil-kamble-b6b68a2b0"><i
                                         class="fa fa-linkedin"></i> Linked In</a></li>
-                            <li><a href="https://www.instagram.com/shekabhi_03/"><i class="fa fa-instagram"></i>
-                                    Instagram</a></li>
+                           
 
                         </ul>
                     </div>
@@ -105,7 +103,7 @@ while ($row = mysqli_fetch_array($ret)) {
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="copyright-content">
                             <p><i class="fa fa-copyright"></i> Men Salon Management System 2023 || Created by
-                                <span>Abhishek singh</span></p>
+                                <span>Sahil kamble</span></p>
                         </div>
                     </div>
                 </div>

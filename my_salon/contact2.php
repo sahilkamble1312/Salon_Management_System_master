@@ -12,7 +12,7 @@ include('includes/dbconnection.php');
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7cMontserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18532.185779366937!2d74.30824995099489!3d16.58859908535112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc0fbe3ea86aacf%3A0xed8af5a130723d95!2sKagal%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1791038175519!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
     <!-- Font Awesome -->
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <!-- Style -->
@@ -64,12 +64,12 @@ while ($row=mysqli_fetch_array($ret)) {
                            <br>
                             <br>
                             
-                            <strong><i class="fa fa-phone-square"></i> Phone no:</strong> <a href="tel:9435059030"><?php echo $row['MobileNumber']; ?></a>
+                            <strong><i class="fa fa-phone-square"></i> Phone no:</strong> <a href="tel:8805423266"><?php echo $row['MobileNumber']; ?></a>
 
                         </address>
                         <address>
                             <strong> <i class="fa fa-envelope"></i> Email: </strong>
-                            <a href="mailto:aayurdhafoundation@gmail.com"><?php  echo $row['Email'];?></a>
+                            <a href="mailto:kamblesahil1312@gmail.com"><?php  echo $row['Email'];?></a>
                           
                         </address>
                          <address>
@@ -81,10 +81,9 @@ while ($row=mysqli_fetch_array($ret)) {
                     <!-- /.widget search -->
                     <div class="widget widget-social">
                         <div class="social-circle">
-                            <a href="https://www.facebook.com/ab.abhishek.1806?mibextid=ZbWKwL" class="#"><i class="fa fa-facebook"></i></a>
-                            <a href="https://www.linkedin.com/in/abhishek-singh-531889240/" class="#"><i class="fa fa-linkedin"></i></a>
-                            <a href="https://www.instagram.com/shekabhi_03/" class="#"><i class="fa fa-instagram"></i></a>
-                            
+                          
+                            <a href="https://www.linkedin.com/in/sahil-kamble-b6b68a2b0" class="#"><i class="fa fa-linkedin"></i></a>
+                           
                             
                             
                         </div>
@@ -146,7 +145,7 @@ while ($row=mysqli_fetch_array($ret)) {
                 <div class="donate-one__img">
 
                     <iframe width="600" height="512" id="gmap_canvas"
-                        src="https://www.google.com/maps/embed/v1/place?q=NERIM+Group+of+Institutions,+Padma+Nath+sarmah+Bhawan,+Tripura+Road,+Jaya+Nagar,+Khanapara,+Guwahati,+Assam,+India&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d346.6554238909983!2d74.31288454646918!3d16.578878892281388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc0fba9367d4535%3A0x5dfec1e0ac9ea82f!2sDeluxe%20Hair%20And%20Beauty%20Salon!5e1!3m2!1sen!2sin!4v1791039800495!5m2!1sen!2sin"
                         frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                 </div>
             </div>

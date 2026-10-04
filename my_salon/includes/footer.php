@@ -11,7 +11,6 @@ require('mailer/Exception.php');
 require('mailer/PHPMailer.php');
 require('mailer/SMTP.php');
 
-
 if (isset($_POST['sub'])) {
     $name = $_POST['email'];
     $mail = new PHPMailer(true);
@@ -23,15 +22,14 @@ if (isset($_POST['sub'])) {
         $mail->isSMTP(); //Send using SMTP
         $mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
         $mail->SMTPAuth = true; //Enable SMTP authentication
-        $mail->Username = 'abhishek16333@gmail.com'; //SMTP username
+        $mail->Username = 'kamblesahil1312@gmail.com'; //SMTP username
         $mail->Password = 'twnesoqlgyfhznmi'; //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; //Enable implicit TLS encryption
         $mail->Port = 465; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
-        $mail->setFrom('abhishek16333@gmail.com', 'Abhishek Singh');
+        $mail->setFrom('kamblesahil1312@gmail.com', 'Sahil Kamble');
         $mail->addAddress($_POST['email']); //Add a recipient
-
 
         //Attachments
         // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
@@ -49,8 +47,7 @@ if (isset($_POST['sub'])) {
 
         Best regards,
         
-        Abhishek Mens salon.';
-
+        Sahil Kamble - Men Salon.';
 
         $mail->send();
         echo "<script>alert('Thank you for subscribing. A confirmation email has been sent to your inbox.')</script>";
@@ -60,8 +57,6 @@ if (isset($_POST['sub'])) {
 }
 
 ?>
-
-
 
 <div class="footer">
     <!-- footer-->
@@ -80,17 +75,16 @@ if (isset($_POST['sub'])) {
                             while ($row = mysqli_fetch_array($ret)) {
 
                                 ?>
-                                <li><i class="fa fa-map-marker"></i>
-                                    <?php echo $row['PageDescription']; ?>
+                            <li><i class="fa fa-map-marker"></i> Deluxe Hair And Beauty Salon, Kagal, Maharashtra 416116
                                 </li>
                                 <li><i class="fa fa-phone"></i>
-                                    <a href="tel:9435059030">
+                                    <a href="tel:8805423266">
                                         <?php echo $row['MobileNumber']; ?>
                                     </a>
                                 </li>
 
                                 <li><i class="fa fa-envelope-o"></i>
-                                    <a href="mailto:aayurdhafoundation@gmail.com">
+                                    <a href="mailto:kamblesahil1312@gmail.com">
                                         <?php echo $row['Email']; ?>
                                     </a>
                                 </li>
@@ -103,14 +97,10 @@ if (isset($_POST['sub'])) {
                         <!-- social block -->
                         <h2 class="widget-title">Social Feed</h2>
                         <ul class="listnone">
-                            <li>
-                                <a href="https://www.facebook.com/ab.abhishek.1806?mibextid=ZbWKwL"> <i
-                                        class="fa fa-facebook"></i> Facebook </a>
-                            </li>
-                            <li><a href="https://www.linkedin.com/in/abhishek-singh-531889240/"><i
+                           
+                            <li><a href="https://www.linkedin.com/in/sahil-kamble-b6b68a2b0"><i
                                         class="fa fa-linkedin"></i> Linked In</a></li>
-                            <li><a href="https://www.instagram.com/shekabhi_03/"><i class="fa fa-instagram"></i>
-                                    Instagram</a></li>
+                            
 
                         </ul>
                     </div>
@@ -142,8 +132,8 @@ if (isset($_POST['sub'])) {
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="copyright-content">
-                            <p><i class="fa fa-copyright"></i> Men Salon Management System 2023 || Created by
-                                <span>Abhishek singh</span>
+                            <p><i class="fa fa-copyright"></i> Men Salon Management System 2026 || Created by
+                                <span>Sahil kamble</span>
                             </p>
                         </div>
                     </div>
