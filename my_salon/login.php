@@ -1,33 +1,26 @@
 <?php
 session_start();
+include('includes/dbconnection.php');
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['username']) && isset($_POST['password'])) {
-        $input_username = $_POST['username'];
-        $input_password = $_POST['password'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-        // read user details from file
-        $user_file = "users/{$input_username}.txt";
-        if (file_exists($user_file)) {
-            $user_details = file_get_contents($user_file);
-            $user_credentials = explode(',', $user_details);
+    $query = mysqli_query($con, "SELECT * FROM tbluser WHERE Email='$username'");
+    $row = mysqli_fetch_assoc($query);
 
-            // check for valid credentials
-            if ($user_credentials[0] === $input_username && $user_credentials[1] === $input_password) {
-                // set session variables to remember the user
-                $_SESSION['loggedin'] = true;
-                $_SESSION['username'] = $input_username;
-
-                // redirect to the book appointment page
-                header('Location: index.php');
-                exit;
-            } else {
-                $message = '<p style="color: red;">Login failed. Incorrect username or password.</p>';
-            }
+    if($row){
+        if(password_verify($password, $row['Password']) || $password == $row['Password']){
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $username;
+            header('Location: index.php');
+            exit;
         } else {
-            $message = '<p style="color: red;">Login failed. User does not exist.</p>';
+            $message = '<p style="color: red;">Incorrect password.</p>';
         }
+    } else {
+        $message = '<p style="color: red;">User does not exist.</p>';
     }
 }
 ?>

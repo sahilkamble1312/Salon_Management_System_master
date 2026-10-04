@@ -1,21 +1,26 @@
 <?php
+session_start();
+include('includes/dbconnection.php'); // jar config.php asel tar nava badal
 $message = '';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['username']) && isset($_POST['password'])) {
-        $input_username = $_POST['username'];
-        $input_password = $_POST['password'];
+    $username = $_POST['username']; // he email/mobile ahe
+    $password = $_POST['password'];
+    
+    // Check user already exists ka?
+    $check = mysqli_query($con, "SELECT Email FROM tbluser WHERE Email='$username'");
+    
+    if(mysqli_num_rows($check) > 0){
+        $message = '<p style="color: red;">Username already exists.</p>';
+    } else {
+        // Secure password save
+        $hashed_pass = password_hash($password, PASSWORD_DEFAULT);
+        $query = mysqli_query($con, "INSERT INTO tbluser(Email, Password) VALUES('$username', '$hashed_pass')");
         
-        // check if user already exists
-        if (file_exists("users/$input_username.txt")) {
-            $message = '<p style="color: red;">Username already exists.</p>';
-        } else {
-            // create user file
-            $file_content = "$input_username,$input_password";
-            if (!file_exists("users")) {
-                mkdir("users");
-            }
-            file_put_contents("users/$input_username.txt", $file_content);
+        if($query){
             $message = '<p style="color: green;">Registration successful. Please login.</p>';
+        } else {
+            $message = '<p style="color: red;">Something went wrong.</p>';
         }
     }
 }
