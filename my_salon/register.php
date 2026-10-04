@@ -7,13 +7,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username']; //
     $password = $_POST['password'];
     
-    // Check user already exists ka?
+    // Check if the username already exists
     $check = mysqli_query($con, "SELECT Email FROM tbluser WHERE Email='$username'");
     
     if(mysqli_num_rows($check) > 0){
         $message = '<p style="color: red;">Username already exists.</p>';
     } else {
-        // Secure password save
+        // Hash the password before storing it in the database
         $hashed_pass = password_hash($password, PASSWORD_DEFAULT);
         $query = mysqli_query($con, "INSERT INTO tbluser(Email, Password) VALUES('$username', '$hashed_pass')");
         
