@@ -1,10 +1,10 @@
 <?php
 session_start();
-include('includes/dbconnection.php'); // jar config.php asel tar nava badal
+include('includes/dbconnection.php'); // 
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username']; // he email/mobile ahe
+    $username = $_POST['username']; //
     $password = $_POST['password'];
     
     // Check user already exists ka?
