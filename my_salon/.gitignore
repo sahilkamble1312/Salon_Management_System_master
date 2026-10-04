@@ -1,0 +1,7 @@
+# Secure - customer txt files ignore
+my_salon/users/*.txt
+my_salon/users/
+
+# XAMPP & System
+.DS_Store
+Thumbs.dbgit
