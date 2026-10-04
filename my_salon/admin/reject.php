@@ -15,11 +15,11 @@ $service = $row['Details'];
 mysqli_query($con, "UPDATE tblcustomers SET Status='Rejected' WHERE AptNumber='$aptnum'");
 mysqli_query($con, "UPDATE tblappointment SET Status='Rejected' WHERE AptNumber='$aptnum'");
 
-// SMS - tujha juna code tasach rahil
+// Send SMS to customer about rejection
 $msg = "Hello $name, Your Appointment No. $aptnum is REJECTED. Please contact salon.";
 sendSalonSMS($mob, $msg);
 
-// WhatsApp sathi
+// WhatsApp message
 $text = "Hello $name, Sorry your appointment at Deluxe Salon Kagal on $adate at $atime for $service could not be confirmed as we are fully booked. Please book for another time. Sorry for inconvenience. Deluxe Salon Kagal";
 $wamsg = urlencode($text);
 $clean_mob = preg_replace('/[^0-9]/', '', $mob);
