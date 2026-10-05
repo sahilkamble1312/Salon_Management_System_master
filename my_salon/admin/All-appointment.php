@@ -117,8 +117,9 @@ echo "N/A (Cash)";
 <a href="accept.php?id=<?php echo $row['ID'];?>" style="color:green; font-weight:bold;">Accept</a> | 
 <a href="reject.php?id=<?php echo $row['ID'];?>" style="color:red; font-weight:bold;">Reject</a>
 <?php } else { echo "Done"; } ?>
-</td>
-<td><a href="view-customer-details.php?viewid=<?php echo $row['ID'];?>">View</a></td>
+<td>
+<a href="view-customer-details.php?viewid=<?php echo $row['ID'];?>" style="background:#007bff; color:#fff; padding:5px 10px; border-radius:3px; text-decoration:none;">View</a>
+<br><br>
 </tr>
 <?php $cnt=$cnt+1; }?>
 </tbody>

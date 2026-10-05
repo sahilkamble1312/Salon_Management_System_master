@@ -77,20 +77,10 @@ if(isset($_POST['search']))
 { 
 
 $sdata=$_POST['searchdata'];
-  ?>
-  <h4 align="center">Result against "<?php echo $sdata;?>" keyword </h4> 
-						<table class="table table-bordered"> 
-							<thead> <tr> 
-								<th>#</th> 
-								<th>Invoice Id</th> 
-								<th>Customer Name</th> 
-								<th>Invoice Date</th> 
-								<th>Action</th>
-							</tr> 
-							</thead> <tbody>
-<?php
-$ret=mysqli_query($con,"select distinct  tblcustomers.Name,tblinvoice.BillingId,tblinvoice.PostingDate from  tblcustomers   
-	join tblinvoice on tblcustomers.ID=tblinvoice.Userid  where tblinvoice.BillingId like '%$sdata%'");
+$ret=mysqli_query($con, "SELECT a.*, u.Name, s.ServiceName, s.Cost FROM tblappointment a 
+LEFT JOIN tbluser u ON u.ID=a.UserId 
+LEFT JOIN tblservices s ON s.ID=a.ServiceId 
+WHERE a.AptNumber LIKE '%$sdata%' OR u.Name LIKE '%$sdata%' OR u.MobileNumber LIKE '%$sdata%' ");
 $num=mysqli_num_rows($ret);
 if($num>0){
 $cnt=1;
